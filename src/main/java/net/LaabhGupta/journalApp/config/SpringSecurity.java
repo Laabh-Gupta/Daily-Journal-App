@@ -34,6 +34,7 @@ public class SpringSecurity {
 //                .build();
 
         return http.authorizeHttpRequests(request -> request
+                        .requestMatchers("/public/**").permitAll()
                         .requestMatchers("/journal/**", "/user/**").authenticated()
                         .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
