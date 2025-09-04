@@ -6,18 +6,22 @@
 #spring.data.mongodb.auto-index-creation=true
 #spring.main.allow-circular-references = true
 
-spring:
-  application:
-    name: journalApp
-  data:
-    mongodb:
-      uri: mongodb+srv://laabhgupta:Laabh%402604@cluster0.siyjcjz.mongodb.net/YOUR_DATABASE_NAME?retryWrites=true&w=majority&appName=Cluster0
-      database: journaldb
-      auto-index-creation: true
-  main:
-    allow-circular-references: true
+#spring:
+#  application:
+#    name: journalApp
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://laabhgupta:Laabh%402604@cluster0.siyjcjz.mongodb.net/YOUR_DATABASE_NAME?retryWrites=true&w=majority&appName=Cluster0
+#      database: journaldb
+#      auto-index-creation: true
+#  main:
+#    allow-circular-references: true
+#
+#server:
+#  port: 8080
+#  servlet:
+#    context-path: /journal
 
-server:
-  port: 8080
-  servlet:
-    context-path: /journal
+spring:
+  profiles:
+    active: dev
