@@ -5,6 +5,8 @@ import net.LaabhGupta.journalApp.entity.JournalEntry;
 import net.LaabhGupta.journalApp.entity.User;
 import net.LaabhGupta.journalApp.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ public class JournalEntryService {
     @Autowired
     private UserService userService;
 
+
     @Transactional
     public void saveEntry(JournalEntry journalEntry, String userName){
         try{
@@ -32,7 +35,6 @@ public class JournalEntryService {
             user.getJournalEntries().add(saved);
             userService.saveUser(user);
         } catch (Exception e) {
-            System.out.println(e);
             throw new RuntimeException("An error occurred while saving the entry.", e);
         }
     }

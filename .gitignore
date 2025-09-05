@@ -6,6 +6,9 @@ target/
 
 htmlReport/
 
+### LOG FILES ###
+/logs/
+
 ### STS ###
 .apt_generated
 .classpath

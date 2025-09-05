@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.LaabhGupta.journalApp.entity.User;
 import net.LaabhGupta.journalApp.repository.UserRepository;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +32,12 @@ public class UserService {
             return true;
         }
         catch (Exception e){
+//            log.debug("Error Occurred for {} :",user.getUserName(), e);
+            log.trace("HEHEHEHEHE");
+            log.debug("HEHEHEHEHE");
+            log.info("HEHEHEHEHE");
+            log.warn("HEHEHEHEHE");
+            log.error("HEHEHEHEHE");
             return false;
         }
 

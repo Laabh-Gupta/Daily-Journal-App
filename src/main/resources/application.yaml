@@ -25,3 +25,9 @@
 spring:
   profiles:
     active: dev
+
+#logging:
+#  level:
+#    net:
+#      LaabhGupta:
+#        journalApp: DEBUG
