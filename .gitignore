@@ -36,3 +36,24 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+# Node / Frontend
+node_modules/
+dist/
+.npm/
+npm-debug.log*
+
+# Java / Maven / Gradle
+.idea/
+target/
+*.class
+*.jar
+*.war
+.settings/
+.project
+.classpath
+
+# OS specific
+.DS_Store
+Thumbs.db
