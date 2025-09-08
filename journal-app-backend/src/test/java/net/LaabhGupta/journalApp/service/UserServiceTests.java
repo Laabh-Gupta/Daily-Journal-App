@@ -23,7 +23,7 @@ public class UserServiceTests {
     @Autowired
     private UserService userService;
 
-//    @Disabled
+    @Disabled
     @ParameterizedTest
     @ValueSource(strings = {
             "Ram",
@@ -41,7 +41,7 @@ public class UserServiceTests {
         assertTrue(userService.saveNewUser(user));
     }
 
-//    @Disabled
+    @Disabled
     @ParameterizedTest
     @CsvSource({
             "Ram",

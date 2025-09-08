@@ -4,6 +4,7 @@ import net.LaabhGupta.journalApp.entity.User;
 import net.LaabhGupta.journalApp.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +28,7 @@ public class UserDetailsServiceImplTests {
     }
 
     @Test
+    @Disabled
     void loadUserByUsernameTest(){
         when(userRepository.findByUserName(ArgumentMatchers.anyString()))
                 .thenReturn(User

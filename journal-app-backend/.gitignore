@@ -3,9 +3,6 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
-htmlReport/
-
 ### LOG FILES ###
 /logs/
 
@@ -17,6 +14,9 @@ htmlReport/
 .settings
 .springBeans
 .sts4-cache
+*.yml
+*.yaml
+*.log
 
 ### IntelliJ IDEA ###
 .idea
@@ -25,6 +25,7 @@ htmlReport/
 *.ipr
 
 ### NetBeans ###
+/htmlReport
 /nbproject/private/
 /nbbuild/
 /dist/
