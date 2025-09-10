@@ -17,10 +17,10 @@ import org.springframework.web.client.RestTemplate;
 public class JournalApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(JournalApplication.class, args);
-		ConfigurableEnvironment environment = context.getEnvironment();
-		System.out.println(environment.getActiveProfiles()[0]);
-//		SpringApplication.run(JournalApplication.class, args);
+//		ConfigurableApplicationContext context = SpringApplication.run(JournalApplication.class, args);
+//		ConfigurableEnvironment environment = context.getEnvironment();
+//		System.out.println(environment.getActiveProfiles()[0]);
+		SpringApplication.run(JournalApplication.class, args);
 	}
 
 	@Bean

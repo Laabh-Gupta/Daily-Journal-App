@@ -4,6 +4,8 @@ package net.LaabhGupta.journalApp.service;
 import net.LaabhGupta.journalApp.api.response.FrontendWeatherResponse;
 import net.LaabhGupta.journalApp.api.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,9 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class WeatherService {
-    private static final String apiKey = "d286286db6b4df0493eb91908aa21c5c"; // Your key here
+
+    @Value("{weather.api.key}")
+    private static String apiKey; // Your key here
     private static final String API_URL = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
 
     @Autowired
@@ -21,6 +25,13 @@ public class WeatherService {
         String finalApiUrl = API_URL.replace("CITY", city).replace("API_KEY", apiKey);
 
         try {
+
+            String requestBody = "{\n"+
+                    "    \"userName\":\"Vipul\",\n"+
+                    "    \"password\":\"vipul\"\n+"+
+                    "}  ";
+
+            HttpEntity<String> httpEntity = new HttpEntity<>(requestBody);
             // 1. Let RestTemplate map the response to your detailed WeatherResponse POJO
             ResponseEntity<WeatherResponse> response = restTemplate.exchange(
                     finalApiUrl,

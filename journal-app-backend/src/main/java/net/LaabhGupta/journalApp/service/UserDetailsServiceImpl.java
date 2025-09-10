@@ -1,5 +1,6 @@
 package net.LaabhGupta.journalApp.service;
 
+import lombok.extern.slf4j.Slf4j;
 import net.LaabhGupta.journalApp.entity.User;
 import net.LaabhGupta.journalApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
 @Service
+@Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
