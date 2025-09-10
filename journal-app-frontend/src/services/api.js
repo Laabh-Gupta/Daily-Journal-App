@@ -42,5 +42,16 @@ export default {
     },
     deleteJournalEntry(id) {
         return apiClient.delete(`/journal/id/${id}`);
+    },
+    // src/services/api.js
+
+    // ... inside the export default { ... }
+    getJournalEntries() {
+        return apiClient.get('/journal');
+    },
+
+    // ADD THIS NEW FUNCTION
+    getWeather(city) {
+        return apiClient.get(`/weather/${city}`);
     }
 };

@@ -1,25 +1,59 @@
+// src/main/java/net/LaabhGupta/journalApp/service/WeatherService.java
 package net.LaabhGupta.journalApp.service;
 
+import net.LaabhGupta.journalApp.api.response.FrontendWeatherResponse;
 import net.LaabhGupta.journalApp.api.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+@Service
 public class WeatherService {
-    private static final String apiKey = "973469edee1dc56fbaf1ae2663ab2bc2";
-
-    private static final String API = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
+    private static final String apiKey = "d286286db6b4df0493eb91908aa21c5c"; // Your key here
+    private static final String API_URL = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
 
     @Autowired
     private RestTemplate restTemplate;
 
-    public WeatherResponse getWeather(String city){
-        String finalApi = API.replace("CITY", city).replace("API_KEY", apiKey);
-        ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalApi, HttpMethod.GET, null, WeatherResponse.class);
-        WeatherResponse body = response.getBody();
-        return body;
+    public FrontendWeatherResponse getWeather(String city) {
+        String finalApiUrl = API_URL.replace("CITY", city).replace("API_KEY", apiKey);
+
+        try {
+            // 1. Let RestTemplate map the response to your detailed WeatherResponse POJO
+            ResponseEntity<WeatherResponse> response = restTemplate.exchange(
+                    finalApiUrl,
+                    HttpMethod.GET,
+                    null,
+                    WeatherResponse.class
+            );
+
+            WeatherResponse weatherData = response.getBody();
+
+            // 2. Transform the complex object into the simple one for the frontend
+            if (weatherData != null && weatherData.getCurrent() != null && weatherData.getLocation() != null) {
+                FrontendWeatherResponse frontendResponse = new FrontendWeatherResponse();
+                frontendResponse.setTemperature(String.valueOf(weatherData.getCurrent().getTemperature()));
+                frontendResponse.setCity(weatherData.getLocation().getName());
+
+                // Safely get the first description and icon
+                if (weatherData.getCurrent().getWeatherDescriptions() != null && !weatherData.getCurrent().getWeatherDescriptions().isEmpty()) {
+                    frontendResponse.setDescription(weatherData.getCurrent().getWeatherDescriptions().get(0));
+                }
+                if (weatherData.getCurrent().getWeatherIcons() != null && !weatherData.getCurrent().getWeatherIcons().isEmpty()) {
+                    frontendResponse.setIcon(weatherData.getCurrent().getWeatherIcons().get(0));
+                }
+
+                frontendResponse.setFeelslike(String.valueOf(weatherData.getCurrent().getFeelslike()));
+
+                return frontendResponse;
+            }
+            return null; // Or handle error appropriately
+
+        } catch (Exception e) {
+            System.err.println("Error fetching weather data: " + e.getMessage());
+            return null;
+        }
     }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { Link } from 'react-router-dom';
 import './Dashboard.css';
+import WeatherWidget from '../components/WeatherWidget';
 
 function DashboardPage() {
     const [entries, setEntries] = useState([]);
@@ -35,6 +36,7 @@ function DashboardPage() {
         <div className="dashboard-container">
             <div className="dashboard-header">
                 <h2>My Journal</h2>
+                <WeatherWidget city="Mumbai" />
                 <a href="/journal/new" className="create-entry-btn">Create New Entry</a>
             </div>
             {entries.length === 0 ? (

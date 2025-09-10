@@ -1,5 +1,6 @@
 package net.LaabhGupta.journalApp.controller;
 
+import net.LaabhGupta.journalApp.api.response.FrontendWeatherResponse;
 import net.LaabhGupta.journalApp.api.response.WeatherResponse;
 import net.LaabhGupta.journalApp.entity.User;
 import net.LaabhGupta.journalApp.repository.UserRepository;
@@ -45,10 +46,10 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> greetings(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
+        FrontendWeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
         String greeting = "";
         if(weatherResponse != null){
-            greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelslike();
+            greeting = ", Weather feels like " + weatherResponse.getFeelslike();
         }
         return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
     }
