@@ -1,8 +1,9 @@
-// src/main/java/net/LaabhGupta/journalApp/service/WeatherService.java
 package net.LaabhGupta.journalApp.service;
 
 import net.LaabhGupta.journalApp.api.response.FrontendWeatherResponse;
 import net.LaabhGupta.journalApp.api.response.WeatherResponse;
+import net.LaabhGupta.journalApp.cache.AppCache;
+import net.LaabhGupta.journalApp.constants.Placeholders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -14,15 +15,17 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class WeatherService {
 
-    @Value("{weather.api.key}")
-    private static String apiKey; // Your key here
-    private static final String API_URL = "http://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
+    @Value("${weather.api.key}")
+    private String apiKey; // Your key here
 
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private AppCache appCache;
+
     public FrontendWeatherResponse getWeather(String city) {
-        String finalApiUrl = API_URL.replace("CITY", city).replace("API_KEY", apiKey);
+        String finalApiUrl = appCache.appCache.get(AppCache.keys.WEATHER_API.toString()).replace("<city>", city).replace(Placeholders.API_KEY, apiKey);
 
         try {
 
