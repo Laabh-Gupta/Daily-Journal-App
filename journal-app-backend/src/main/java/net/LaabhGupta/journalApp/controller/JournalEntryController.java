@@ -1,7 +1,9 @@
 package net.LaabhGupta.journalApp.controller;
 
+import net.LaabhGupta.journalApp.dto.EmailRequest;
 import net.LaabhGupta.journalApp.entity.JournalEntry;
 import net.LaabhGupta.journalApp.entity.User;
+import net.LaabhGupta.journalApp.service.EmailService;
 import net.LaabhGupta.journalApp.service.JournalEntryService;
 import net.LaabhGupta.journalApp.service.UserService;
 import org.bson.types.ObjectId;
@@ -26,6 +28,9 @@ public class JournalEntryController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping
     public ResponseEntity<?> getAllJournalEntriesOfUser(){
@@ -97,6 +102,20 @@ public class JournalEntryController {
             }
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("mail")
+    public ResponseEntity<?> sendMailJournal(@RequestBody EmailRequest emailRequest) {
+        try {
+            emailService.sendEmail(
+                    emailRequest.to(),
+                    emailRequest.subject(),
+                    emailRequest.body()
+            );
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
 

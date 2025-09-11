@@ -1,17 +1,10 @@
-#spring.application.name=journalApp
-#spring.data.mongodb.uri=mongodb+srv://laabhgupta:Laabh%402604@cluster0.siyjcjz.mongodb.net/YOUR_DATABASE_NAME?retryWrites=true&w=majority&appName=Cluster0
-#spring.data.mongodb.database=journaldb
-##spring.data.mongodb.username=username+
-##spring.data.mongodb.password=password
-#spring.data.mongodb.auto-index-creation=true
-#spring.main.allow-circular-references = true
-
 spring:
   application:
     name: journalApp
   data:
     mongodb:
-      uri: mongodb+srv://laabhgupta:Laabh%402604@cluster0.siyjcjz.mongodb.net/YOUR_DATABASE_NAME?retryWrites=true&w=majority&appName=Cluster0
+      # Read the MongoDB URI from an environment variable named MONGO_URI
+      uri: ${MONGO_URI}
       database: journaldb
       auto-index-creation: true
   main:
@@ -19,8 +12,10 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: hellolaabhhere@gmail.com
-    password: tpov iegn ufoo hksu
+    # Read email username from an environment variable
+    username: ${GMAIL}
+    # Read email password from an environment variable
+    password: ${GMAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -33,10 +28,7 @@ server:
   servlet:
     context-path: /journal
 
-weather:
-  api:
-    key: d286286db6b4df0493eb91908aa21c5c
-
+#
 #spring:
 #  profiles:
 #    active: dev

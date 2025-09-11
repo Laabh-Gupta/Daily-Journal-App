@@ -23,7 +23,6 @@ htmlReport/
 *.iws
 *.iml
 *.ipr
-*.yaml
 
 ### NetBeans ###
 /nbproject/private/

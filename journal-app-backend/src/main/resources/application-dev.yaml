@@ -1,15 +1,30 @@
-spring:
-  application:
-    name: journalApp
-  data:
-    mongodb:
-      uri: mongodb+srv://laabhgupta:Laabh%402604@cluster0.siyjcjz.mongodb.net/YOUR_DATABASE_NAME?retryWrites=true&w=majority&appName=Cluster0
-      database: journaldb
-      auto-index-creation: true
-  main:
-    allow-circular-references: true
-
-server:
-  port: 8080
-  servlet:
-    context-path: /journal
+#spring:
+#  application:
+#    name: journalApp
+#  data:
+#    mongodb:
+#      # Read the MongoDB URI from an environment variable named MONGO_URI
+#      uri: ${MONGO_URI}
+#      database: journaldb
+#      auto-index-creation: true
+#  main:
+#    allow-circular-references: true
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    # Read email username from an environment variable
+#    username: ${GMAIL}
+#    # Read email password from an environment variable
+#    password: ${GMAIL_PASSWORD}
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#
+#server:
+#  port: 8080
+#  servlet:
+#    context-path: /journal
+# Keep other non-sensitive properties as they are
