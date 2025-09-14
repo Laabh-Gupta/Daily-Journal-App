@@ -1,4 +1,8 @@
 spring:
+  redis:
+#    uri: redis-cli -u redis://default:hmSX3mbVZGh7Eh3qPnhUEHWHDeCQN6VX@redis-10818.c305.ap-south-1-1.ec2.redns.redis-cloud.com:10818
+    host: localhost
+    port: 6379
   application:
     name: journalApp
   data:
@@ -19,6 +23,8 @@ spring:
           auth: true
           starttls:
             enable: true
+
+
 
 server:
   port: 8080

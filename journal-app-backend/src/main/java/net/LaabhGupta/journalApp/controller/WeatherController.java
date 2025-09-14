@@ -14,14 +14,14 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    @GetMapping("/{city}")
-    // CHANGE THE RETURN TYPE HERE
-    public ResponseEntity<FrontendWeatherResponse> getWeather(@PathVariable String city) {
-        // AND CHANGE THE VARIABLE TYPE HERE
-        FrontendWeatherResponse weatherData = weatherService.getWeather(city);
-        if (weatherData != null) {
-            return new ResponseEntity<>(weatherData, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+//    @GetMapping("/{city}")
+//    // CHANGE THE RETURN TYPE HERE
+//    public ResponseEntity<FrontendWeatherResponse> getWeather(@PathVariable String city) {
+//        // AND CHANGE THE VARIABLE TYPE HERE
+//        FrontendWeatherResponse weatherData = weatherService.getWeather(city);
+//        if (weatherData != null) {
+//            return new ResponseEntity<>(weatherData, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 }

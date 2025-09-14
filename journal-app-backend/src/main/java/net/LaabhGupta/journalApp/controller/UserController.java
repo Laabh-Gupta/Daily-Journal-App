@@ -43,14 +43,26 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+//    @GetMapping
+//    public ResponseEntity<?> greetings(){
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        FrontendWeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
+//        String greeting = "";
+//        if(weatherResponse != null){
+//            greeting = ", Weather feels like " + weatherResponse.getFeelslike();
+//        }
+//        return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
+//    }
+
     @GetMapping
     public ResponseEntity<?> greetings(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        FrontendWeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
+        WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
         String greeting = "";
         if(weatherResponse != null){
-            greeting = ", Weather feels like " + weatherResponse.getFeelslike();
+            greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelslike();
         }
+
         return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
     }
 }
