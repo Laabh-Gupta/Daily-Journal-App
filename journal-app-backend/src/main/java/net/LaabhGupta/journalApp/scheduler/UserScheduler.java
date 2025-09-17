@@ -4,6 +4,7 @@ import net.LaabhGupta.journalApp.cache.AppCache;
 import net.LaabhGupta.journalApp.entity.JournalEntry;
 import net.LaabhGupta.journalApp.entity.User;
 import net.LaabhGupta.journalApp.enums.Sentiment;
+import net.LaabhGupta.journalApp.model.SentimentData;
 import net.LaabhGupta.journalApp.repository.UserRepositoryImpl;
 import net.LaabhGupta.journalApp.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class UserScheduler {
 
     @Autowired
     private AppCache appCache;
+
+//    @Autowired
+//    private kafkaTemplate<String, SentimentData> kafkaTemplate;
 
     @Scheduled(cron = "0 0 9 * * SUN")
     public void fetchUsersAndSendSaMail(){
