@@ -1,5 +1,6 @@
 package net.LaabhGupta.journalApp.service;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +10,7 @@ public class EmailServiceTest {
     @Autowired
     private EmailService emailService;
 
+    @Disabled
     @Test
     void testEmailService() {
         emailService.sendEmail("reachvedicagupta@gmail.com","Testing Java Mail","Hi ap kaise hai. HeHeHe");

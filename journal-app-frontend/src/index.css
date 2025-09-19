@@ -1,35 +1,6 @@
-/* src/index.css */
-:root {
-  --primary-color: #3b82f6;
-  --primary-hover: #2563eb;
-  --danger-color: #ef4444;
-  --danger-hover: #dc2626;
-  --background-start: #f1f5f9;
-  --background-end: #e2e8f0;
-  --card-bg: rgba(255, 255, 255, 0.5);
-  --text-color: #0f172a;
-  --subtle-text: #475569;
-  --border-color: rgba(255, 255, 255, 0.7);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-  --border-radius: 12px;
-  --font-main: 'Inter', sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font-main);
-  background: linear-gradient(135deg, var(--background-start), var(--background-end));
-  color: var(--text-color);
-  min-height: 100vh;
-}
-
-/* Animation for pages to fade in smoothly */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+html, body, #root { height: 100%; }
+body { @apply bg-slate-50 text-slate-900; }
